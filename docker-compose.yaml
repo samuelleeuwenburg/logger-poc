@@ -1,0 +1,13 @@
+services:
+  logger:
+    build:
+      context: .
+    depends_on:
+      - mosquitto
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    expose:
+      - 1883
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
