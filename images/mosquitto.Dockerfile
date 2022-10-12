@@ -1,2 +1,3 @@
 FROM eclipse-mosquitto:latest
-COPY ./mosquitto/config/mosquitto.conf /mosquitto/config/mosquitto.conf
+WORKDIR /mosquitto/config
+COPY ./mosquitto/config .
