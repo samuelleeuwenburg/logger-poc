@@ -2,17 +2,15 @@ services:
   logger:
     build:
       context: .
+      dockerfile: ./images/logger.Dockerfile
     depends_on:
       - mosquitto
 
   mosquitto:
-    image: eclipse-mosquitto:latest
+    build:
+      context: .
+      dockerfile: ./images/mosquitto.Dockerfile
     expose:
       - 1883
-    configs:
-      - source: mosquitto_config
-        target: /mosquitto/config/mosquitto.conf
-
-configs:
-  mosquitto_config:
-    file: ./mosquitto/config/mosquitto.conf
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
