@@ -2,14 +2,11 @@ services:
   logger:
     build:
       context: .
-      dockerfile: ./images/logger.Dockerfile
     depends_on:
       - mosquitto
 
   mosquitto:
-    build:
-      context: .
-      dockerfile: ./images/mosquitto.Dockerfile
+    image: eclipse-mosquitto:latest
     expose:
       - 1883
     volumes:
