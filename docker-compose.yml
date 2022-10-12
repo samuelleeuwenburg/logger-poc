@@ -9,5 +9,10 @@ services:
     image: eclipse-mosquitto:latest
     expose:
       - 1883
-    volumes:
-      - ./mosquitto/config:/mosquitto/config
+    configs:
+      - source: mosquitto_config
+        target: /mosquitto/config/mosquitto.conf
+
+configs:
+  mosquitto_config:
+    file: ./mosquitto/config/mosquitto.conf
